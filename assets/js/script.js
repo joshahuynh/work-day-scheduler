@@ -39,7 +39,7 @@ function updateHourly() {
     var now = moment().hour();
 
     $(".time-block").each(function(){
-        var hourBlock = parseInt($(this).attr("id"));
+        var hourBlock = $(this).attr("id");
         if (hourBlock < now){
             $(this).addClass("past");
         } else if (hourBlock === now) {
