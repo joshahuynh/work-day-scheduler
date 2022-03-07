@@ -33,3 +33,40 @@ $("button").on("click", function(event){
 for (var j = 0; j < timeBlock.length; j++) {
     $("#text"+[j+9]).val(localStorage.getItem(j+9));
 }
+
+// save to local storage
+$("button").on("click", function(event){
+    $(".saved").text("task saved!");
+        setTimeout(function(){
+            $(".saved").text("");
+        }, 1000);
+    var hour = $(this).parent().attr("id");
+    var content = $(this).siblings("textarea").val();
+    localStorage.setItem(hour, content);
+})
+
+// retrieve from local storage
+for (var j = 0; j < timeBlock.length; j++) {
+    $("#text"+[j+9]).val(localStorage.getItem(j+9));
+}
+
+// update hourly
+function updateHourly() {
+    var now = moment().hour();
+
+    $(".time-block").each(function(){
+        var hourBlock = parseInt($(this).attr("id"));
+        if (hourBlock < now){
+            $(this).addClass("past");
+        } else if (hourBlock === now) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
+        } else {
+            $(this).removeClass("past");
+            $(this).removeClass("present");
+            $(this).addClass("future");
+        };
+    })
+}
+
+updateHourly();
