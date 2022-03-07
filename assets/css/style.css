@@ -71,3 +71,9 @@ textarea{
     font-size: 20px;
     transition: all .3s ease-in-out;
 }
+
+.saved {
+    font-size: 16px;
+    text-align: center;
+    color: #ff0000;
+}
