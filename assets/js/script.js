@@ -17,3 +17,19 @@ for (var i = 0; i < timeBlock.length; i++) {
     btn.appendTo(row);
     row.appendTo(container);
 }
+
+// save to local storage
+$("button").on("click", function(event){
+    $(".saved").text("task saved!");
+        setTimeout(function(){
+            $(".saved").text("");
+        }, 1000);
+    var hour = $(this).parent().attr("id");
+    var content = $(this).siblings("textarea").val();
+    localStorage.setItem(hour, content);
+})
+
+// retrieve from local storage
+for (var j = 0; j < timeBlock.length; j++) {
+    $("#text"+[j+9]).val(localStorage.getItem(j+9));
+}
