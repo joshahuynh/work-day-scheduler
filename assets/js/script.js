@@ -20,6 +20,7 @@ for (var i = 0; i < timeBlock.length; i++) {
 
 // save to local storage
 $("button").on("click", function(event){
+    event.preventDefault();
     $(".saved").text("task saved!");
         setTimeout(function(){
             $(".saved").text("");
@@ -45,7 +46,7 @@ function updateHourly() {
         } else if (hourBlock == now) {
             $(this).removeClass("past");
             $(this).addClass("present");
-        } else {
+        } else { 
             $(this).removeClass("past");
             $(this).removeClass("present");
             $(this).addClass("future");
